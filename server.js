@@ -25,6 +25,7 @@ app.use(
     cors({
         // 클라이언트 도메인 입력
         origin: 'http://10k-bucket.s3-website.ap-northeast-2.amazonaws.com/',
+        credentials: true,
         method: ['GET', 'POST']
         // JWT 토큰 인증 필요?
     })
@@ -43,15 +44,19 @@ app.put('/goal/change_desc', changeDesc)
 app.delete('/user/delete', withdrawal)
 
 // open ssl? 
-// http로 변경 후 ec2 적용
-const server = https.createServer(
-    {
-        key: fs.readFileSync(__dirname + '/key.pem', 'utf-8'),
-        cert: fs.readFileSync(__dirname + '/cert.pem', 'utf-8')
-    },
-    app.use('/', (req, res) => {
-        res.send('start https server');
-    })
-).listen('http://theone10k.kro.kr/')
+// https 변경 필요
+const http = require('http');
+ 
+// http모듈의 createServer 함수를 호출하여 서버를 생성합니다.
+// req: request. 웹 요청 매개변수, res: response. 웹 응답 매개변수
+const server = http.createServer(function (req, res) {
+    // writeHead: 응답 헤더를 작성합니다.
+    // 200: 응답 성공, text/html: html문서
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    // end: 응답 본문을 작성합니다.
+    res.end('Hello World');
+    // listen: 매개변수로 포트와 호스트를 지정합니다.
+}).listen('ec2-13-209-4-81.ap-northeast-2.compute.amazonaws.com');
+console.log('Server running at http://theone10k.kro.kr/');
 
 module.exports = server;
