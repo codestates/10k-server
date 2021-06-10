@@ -4,6 +4,7 @@ const fs = require('fs');
 const express = require('express');
 const morgan = require("morgan");
 const cors = require('cors');
+require("dotenv").config();
 
 const signin = require('./controllers/signin')
 const signup = require('./controllers/signup')
@@ -56,7 +57,7 @@ const server = http.createServer(function (req, res) {
     // end: 응답 본문을 작성합니다.
     res.end('Hello World');
     // listen: 매개변수로 포트와 호스트를 지정합니다.
-}).listen('ec2-13-209-4-81.ap-northeast-2.compute.amazonaws.com');
+}).listen(process.env.EC2);
 console.log('Server running at http://theone10k.kro.kr/');
 
 module.exports = server;
