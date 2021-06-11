@@ -7,7 +7,7 @@ const { sign, verify } = require("jsonwebtoken");
 module.exports = {
     // access 토큰 생성
     createAccessToken: (data) => {
-        return sign(data, process.env.ACCESS_SECRET, { expiresIn: "30m" });
+        return sign(data, process.env.ACCESS_SECRET, { expiresIn: "60m" });
     },
     // refrech 토큰 생성
     // createRefreshToken: (data) => {

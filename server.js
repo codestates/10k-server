@@ -20,7 +20,7 @@ const saveTime = require('./controllers/saveTime')
 const app = express();
 
 app.use(express.json())
-app.use(morgan);
+app.use(morgan("default"));
 
 // app.use(cors());
 app.use(
@@ -32,6 +32,9 @@ app.use(
     })
 );
 
+app.get('/', (req, res) => {
+    res.send('test')
+})
 app.get('/user', mypage)
 app.get('/signout', signout)
 
@@ -47,12 +50,19 @@ app.delete('/user', withdrawal)
 app.delete('/goals', removeGoal)
 
 // https 변경 필요
-const http = require('http');
+// const http = require('http');
+
+function handleListen() {
+	console.log("Listen on 4000 port")
+}
+
+const server = app.listen(4000, handleListen)
  
-const server = http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('Hello World');
-}).listen(4000);
+// const server = http.createServer(function (req, res) {
+//     res.writeHead(200, {'Content-Type': 'text/html'});
+//     res.end('Hello World');
+// }, app).listen(4000);
+
 console.log('Server running at http://localhost:4000');
 
 module.exports = server;
