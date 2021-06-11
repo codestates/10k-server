@@ -26,7 +26,6 @@ const signin = async (req,res) => {
 
     // 회원인지 확인 후 회원이라면 accessToken, refreshToken을 발행한다.
     // 응답에 accessToken을 담아서 보내주고 reFreshToken도 함께 보내준다.
-    
 }
 
 module.exports = signin
