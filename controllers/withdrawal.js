@@ -11,8 +11,6 @@ const withdrawal = async (req,res) => {
     await users.destroy({where: {email:verity.email}})
     res.status(200).send('회원탈퇴 되었습니다')
   }
-
-  
 }
 
 module.exports = withdrawal
