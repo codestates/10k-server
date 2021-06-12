@@ -7,7 +7,7 @@ const { sign, verify } = require("jsonwebtoken");
 module.exports = {
     // access 토큰 생성
     createAccessToken: (data) => {
-        return sign(data, process.env.ACCESS_SECRET, { expiresIn: "60m" });
+        return sign(data, process.env.ACCESS_SECRET, { expiresIn: "24h" });
     },
     // refrech 토큰 생성
     // createRefreshToken: (data) => {
@@ -36,11 +36,13 @@ module.exports = {
           return null;
         }
         const token = authorization.split(" ")[1];
+        console.log('엑세스 토큰:', token);
     
         try {
           return verify(token, process.env.ACCESS_SECRET);
         } catch (err) {
           // 토큰 인증 실패시
+          console.log(err);
           return null;
         }
     },

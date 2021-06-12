@@ -18,8 +18,8 @@ const signin = async (req,res) => {
     delete userinfo.dataValues.password;
     const accessToken = tokenFunctions.createAccessToken(userinfo.dataValues)
 
-    res.status(200).send({
-        accessToken:accessToken, 
+    res.status(200).json({
+        accessToken: accessToken
     })
     // 로그인 요청을 받으면 회원인지 확인한다
     // 회원이 아니라면 메세지를 하나 띄워준다. 회원이 아닙니다.
