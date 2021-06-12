@@ -16,14 +16,14 @@ const mypage = async (req, res) => {
     // TImes 데이터가 있는 경우
     // 데이터 전송 : name, email, goal, acc time, total time
     const name = await users.findOne({where : {id : data.id}})
-    // name : name.dataValues.name, email : name.dataValues.email,
+    // name : name.dataValues.name, email : name.dataValues.email, 
 
-    console.log('*****************************************************************');
-    console.log('타임즈 데이터:', timesData[0].dataValues, timesData.length);
-    console.log('*****************************************************************');
+    // console.log('*****************************************************************');
+    // console.log('타임즈 데이터:', timesData[0].dataValues, timesData.length);
+    // console.log('*****************************************************************');
     // data =  {
     //     "id": 1,
-    //     "user_id": 1,
+    //     "user_id": 1, 
     //     "goal_id": 1,
     //     "acc_time": "0",
     //     "total_time": "10000",
