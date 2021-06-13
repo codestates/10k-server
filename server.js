@@ -14,7 +14,7 @@ const changeDesc = require('./controllers/changeDesc')
 const addGoal = require('./controllers/addGoal')
 const removeGoal = require('./controllers/removeGoal')
 const withdrawal = require('./controllers/withdrawal')
-const goalsPage = require('./controllers/goalsPage')
+const goalsPage = require('./controllers/goalPage')
 const saveTime = require('./controllers/saveTime')
 
 const app = express();

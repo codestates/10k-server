@@ -18,27 +18,11 @@ const mypage = async (req, res) => {
     const name = await users.findOne({where : {id : data.id}})
     // name : name.dataValues.name, email : name.dataValues.email, 
 
-    // console.log('*****************************************************************');
-    // console.log('타임즈 데이터:', timesData[0].dataValues, timesData.length);
-    // console.log('*****************************************************************');
-    // data =  {
-    //     "id": 1,
-    //     "user_id": 1, 
-    //     "goal_id": 1,
-    //     "acc_time": "0",
-    //     "total_time": "10000",
-    //     "description": "골 목표 설명"
-    // },
-
     for(let i = 0; i < timesData.length; i++) {
         console.log(`타임즈 데이터 ${i}번:`, timesData[i].dataValues)
         const goalName = await goals.findOne({where : {id : timesData[i].dataValues.id}})
         timesData[i].dataValues.goalName = goalName.name;
     }
-
-    // data =  {
-    //     "goalName": "테스트1",
-    // },
 
     res.json({
             name : name.dataValues.name, 
