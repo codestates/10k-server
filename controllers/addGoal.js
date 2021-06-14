@@ -11,8 +11,7 @@ const addGoal = async (req, res) => {
 
     let checkGoalsTable = await goals.findOne({where : {name : goalName}});
     // goals 테이블에 없는 경우
-    
-    // 비동기 처리 필요!!!!!!!!
+
     if(!checkGoalsTable) {
         await goals.create({name: goalName})
         // checkGoalsTable이 현재 null이므로 재할당
@@ -24,7 +23,7 @@ const addGoal = async (req, res) => {
 
     // 중복된 goal 차단
     if(!checkTimesTable) {
-        times.create({ 
+        await times.create({ 
             user_id : userId, 
             goal_id : goalId, 
             total_time : totalTime, 
@@ -34,8 +33,6 @@ const addGoal = async (req, res) => {
     } else {
         res.status(409).json('이미 등록된 목표 입니다.')
     }
-
-    const userData = await times 
 
     // 굳이 데이터를 보낼 필요가 있을까?
     res.json({

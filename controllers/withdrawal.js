@@ -1,9 +1,6 @@
 const tokenFunctions = require('./tokenFunctions')
 const { users ,times, goals} = require('../DataBase/models')
 
-
-
-
 const withdrawal = async (req,res) => {
   let timesinfo = await times.findAll({})
   const verity = tokenFunctions.isAuthorized(req)  //토큰 해독
@@ -28,12 +25,9 @@ const withdrawal = async (req,res) => {
     //   times.sequelize.query(update)
     //   times.sequelize.query(idReset)   //27~29 times 테이블 auto_increment 정렬.
     // })
-    
     }
     res.status(200).send('회원탈퇴 되었습니다')
   }
-
-  
 
 module.exports = withdrawal
 

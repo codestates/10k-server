@@ -4,6 +4,8 @@ const { users, times, goals } = require('../DataBase/models')
 const saveTime = async (req, res) => {
     // 클라이언트에 goalName 보내달라고 요청하기.
     const { accTime, goalName } = req.body
+    // 클라에서 timesId를 보내줄 경우
+    // const { timesId } = req.body
 
     const data = isAuthorized(req)
     console.log('토큰 해독 데이터:', data); // id, email

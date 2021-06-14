@@ -5,10 +5,13 @@ const goalPage = async (req, res) => {
     const data = isAuthorized(req);
     const userId = data.id;
     const { userName, goalName } = req.body;
+    // 클라이언트에서 timesId를 보내줄 경우
     // const { timesId } = res.body;
 
     const goalId = await goals.findOne({where: {name: goalName}});
     const timesId = await times.findOne({ where : {user_id : userId, goal_id : goalId.dataValues.id}})
+    // 클라이언트에서 timesId를 보내줄 경우
+    // const timesId = await times.findOne({ where : {id : timesId }})
 
     res.json({
         userName: userName,

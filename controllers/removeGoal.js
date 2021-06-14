@@ -3,6 +3,8 @@ const { users, times, goals } = require('../DataBase/models')
 
 const removeGoal = async (req, res) => {
     const { goalName } = req.body
+    // 클라이언트 timesId를 보내줄 경우
+    // const { timesId } = req.body
 
     const data = isAuthorized(req);
     console.log('토큰 해독 데이터:', data); // id, email
@@ -13,6 +15,8 @@ const removeGoal = async (req, res) => {
     console.log('goalId:', goalId)
 
     times.destroy({where : {user_id: userId, goal_id: goalId.dataValues.id }})
+    // 클라이언트 timesId를 보내줄 경우
+    // times.destroy({where : {id : timesId }})
 
     res.send("목표가 삭제되었습니다.")
 }
