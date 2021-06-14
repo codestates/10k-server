@@ -3,6 +3,9 @@ const { users, times, goals } = require('../DataBase/models')
 
 const removeGoal = async (req, res) => {
     const { goalName } = req.body
+    console.log('요청 바디@@@@:',req.body)
+    console.log('요청 헤더@@@@:',req.headers)
+    
     // 클라이언트 timesId를 보내줄 경우
     // const { timesId } = req.body
 

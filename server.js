@@ -26,9 +26,9 @@ app.use(morgan("default"));
 app.use(
     cors({
         // 클라이언트 도메인 입력
-        origin: 'http://10k-bucket.s3-website.ap-northeast-2.amazonaws.com/',
+        origin: 'http://localhost:3000',
         credentials: true,
-        method: ['GET', 'POST']
+        method: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS']
     })
 );
 

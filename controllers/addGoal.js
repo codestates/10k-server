@@ -2,7 +2,7 @@ const { isAuthorized } = require('./tokenFunctions')
 const { users, times, goals } = require('../DataBase/models')
 
 const addGoal = async (req, res) => {
-    // console.log('요청 바디:', req.body);
+    console.log('요청 바디:', req.headers);
     const { goalName, description, totalTime, accTime  } = req.body
 
     const data = isAuthorized(req)

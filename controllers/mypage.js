@@ -3,6 +3,7 @@ const { users, times, goals } = require('../DataBase/models');
 
 const mypage = async (req, res) => {
     // 토큰 해독 검증
+    console.log(req.headers)
     const data = isAuthorized(req)
     console.log('data:', data); // id
 
