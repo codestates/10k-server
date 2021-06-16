@@ -4,6 +4,7 @@ const fs = require('fs');
 const express = require('express');
 const morgan = require("morgan");
 const cors = require('cors');
+const cookieParser = require('cookie-parser')
 require("dotenv").config();
 
 const signin = require('./controllers/signin')
@@ -21,6 +22,7 @@ const app = express();
 
 app.use(express.json())
 app.use(morgan("default"));
+app.use(cookieParser());
 
 // app.use(cors());
 app.use(
