@@ -28,14 +28,14 @@ app.use(cookieParser());
 app.use(
     cors({
         // 클라이언트 도메인 입력
-        origin: 'http://localhost:3000',
+        origin: 'http://10k-bucket.s3-website.ap-northeast-2.amazonaws.com/',
         credentials: true,
         method: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS']
     })
 );
 
 app.get('/', (req, res) => {
-    res.send('test')
+    res.send('Hello World')
 })
 app.get('/user', mypage)
 app.get('/signout', signout)
@@ -55,16 +55,17 @@ app.delete('/goals', removeGoal)
 // const http = require('http');
 
 function handleListen() {
-	console.log("Listen on 4000 port")
+	console.log("Listen on 80 port")
 }
 
-const server = app.listen(4000, handleListen)
+const server = app.listen(80, handleListen)
+// const server = app.listen(443, handleListen)
  
 // const server = http.createServer(function (req, res) {
 //     res.writeHead(200, {'Content-Type': 'text/html'});
 //     res.end('Hello World');
 // }, app).listen(4000);
 
-console.log('Server running at http://localhost:4000');
+console.log('Server running at 80');
 
 module.exports = server;
