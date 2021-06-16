@@ -2,8 +2,8 @@ const tokenFunctions = require('./tokenFunctions')
 const { users ,times, goals} = require('../DataBase/models')
 
 const withdrawal = async (req,res) => {
-  let timesinfo = await times.findAll({})
-  const verity = tokenFunctions.isAuthorized(req)  //토큰 해독
+  const verity = tokenFunctions.isAuthorized(req)
+
   
   if(!verity){ //토큰 해독불가능
     // 유효기간 지난 토큰. or 해독 안되는 잘못된 토큰
@@ -14,6 +14,10 @@ const withdrawal = async (req,res) => {
       times.destroy({where:{user_id:res.id}})} )
       
     await users.destroy({where:{email:verity.email}})
+
+    res.cookie('login',false)
+    res.cookie('accessToken',null)
+    res.status(200).send('회원탈퇴 되었습니다')
     // .then(() => {
     //   times.findAll({})})
     // .then(res => {
@@ -26,7 +30,8 @@ const withdrawal = async (req,res) => {
     //   times.sequelize.query(idReset)   //27~29 times 테이블 auto_increment 정렬.
     // })
     }
-    res.status(200).send('회원탈퇴 되었습니다')
+    //쿠키 보내주기
+
   }
 
 module.exports = withdrawal
