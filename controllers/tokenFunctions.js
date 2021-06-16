@@ -14,17 +14,18 @@ module.exports = {
     });
   },
   sendAccessToken: (res, accessToken) => {
-    res.json({ accessToken: accessToken });
+    res.json({accessToken: accessToken });
   },
   resendAccessToken: (res, accessToken, data) => {
     res.json({ data: { accessToken, userInfo: data }, message: "ok" });
   },
   isAuthorized: (req) => {
-    const authorization = req.headers["authorization"];
-    if (!authorization) {
+    console.log("authorizd@@@@@@@@@@@@@@@@@@@@@@@@@@@2",req.cookies)
+    const token = req.cookies.accessToken
+    if (!token) {
       return null;
     }
-    const token = authorization.split(" ")[1];
+   
     try {
       return verify(token, process.env.ACCESS_SECRET);
     } catch (err) {

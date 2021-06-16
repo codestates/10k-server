@@ -9,6 +9,7 @@ const { users } = require('../DataBase/models')
 
 
 const signin = async (req,res) => {
+    console.log("요청",req)
     const {email, password} = req.body
     let userinfo = await users.findOne({where:{email:email, password:password}}) //회원인지 아닌지 확인
 
@@ -27,7 +28,8 @@ const signin = async (req,res) => {
     // res.cookie("accessToken", accessToken, {
     //     httpOnly: false,
     // });
-    res.cookie('accessToken', accessToken);
+    res.cookie('login', true);
+    res.cookie('accessToken', accessToken)
     sendAccessToken(res, accessToken);
     // 로그인 요청을 받으면 회원인지 확인한다.
     // 회원이 아니라면 메세지를 하나 띄워준다. 회원이 아닙니다.
