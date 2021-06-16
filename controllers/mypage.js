@@ -3,7 +3,7 @@ const { users, times, goals } = require('../DataBase/models');
 
 const mypage = async (req, res) => {
     // 토큰 해독 검증
-    console.log(req.headers)
+    console.log("여기@@@@@@@@@@@@@@@@@@@@@",req.cookies.login)
     const data = isAuthorized(req)
     console.log('data:', data); // id
 
@@ -29,6 +29,7 @@ const mypage = async (req, res) => {
     }
 
     res.json({
+            login:req.cookies.login,
             name : name.dataValues.name, 
             email : name.dataValues.email,
             // times 테이블에 goal name이 추가 된 데이터.
