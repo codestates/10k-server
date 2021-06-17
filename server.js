@@ -27,8 +27,8 @@ app.use(cookieParser());
 // app.use(cors());
 app.use(
     cors({
-        // 클라이언트 도메인 입력
-        origin: 'http://10k-bucket.s3-website.ap-northeast-2.amazonaws.com/',
+        // 요청을 하는 클라이언트 버킷 주소
+        origin: 'http://localhost:3000',
         credentials: true,
         method: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS']
     })
@@ -55,10 +55,10 @@ app.delete('/goals', removeGoal)
 // const http = require('http');
 
 function handleListen() {
-	console.log("Listen on 80 port")
+	console.log("Listen on 4000 port")
 }
 
-const server = app.listen(80, handleListen)
+const server = app.listen(4000, handleListen)
 // const server = app.listen(443, handleListen)
  
 // const server = http.createServer(function (req, res) {
@@ -66,6 +66,6 @@ const server = app.listen(80, handleListen)
 //     res.end('Hello World');
 // }, app).listen(4000);
 
-console.log('Server running at 80');
+console.log('Server running at 4000');
 
 module.exports = server;

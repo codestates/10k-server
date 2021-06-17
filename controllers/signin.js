@@ -9,7 +9,6 @@ const { users } = require('../DataBase/models')
 
 
 const signin = async (req,res) => {
-    console.log("요청",req)
     const {email, password} = req.body
     let userinfo = await users.findOne({where:{email:email, password:password}}) //회원인지 아닌지 확인
 
