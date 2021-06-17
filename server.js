@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(
     cors({
         // 요청을 하는 클라이언트 버킷 주소
-        origin: 'http://localhost:3000',
+        origin:'http://localhost:3000',
         credentials: true,
         method: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS']
     })
