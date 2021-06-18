@@ -60,11 +60,6 @@ app.delete('/goals', removeGoal)
 
 const server = app.listen(4000)
 // const server = app.listen(443, handleListen)
- 
-// const server = http.createServer(function (req, res) {
-//     res.writeHead(200, {'Content-Type': 'text/html'});
-//     res.end('Hello World');
-// }, app).listen(4000);
 
 console.log('Server running at 4000');
 
