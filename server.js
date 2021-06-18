@@ -45,7 +45,7 @@ app.post('/signup', signup)
 app.post('/goals', addGoal)
 app.post('/mypage/goal', goalsPage)
 app.post('/goals/time', saveTime)
-
+ 
 app.put('/goals', changeDesc)
 
 app.delete('/user', withdrawal)
@@ -54,11 +54,11 @@ app.delete('/goals', removeGoal)
 // https 변경 필요
 // const http = require('http');
 
-function handleListen() {
-	console.log("Listen on 4000 port")
-}
+// function handleListen() {
+// 	console.log("Listen on 4000 port")
+// }
 
-const server = app.listen(4000, handleListen)
+const server = app.listen(4000)
 // const server = app.listen(443, handleListen)
  
 // const server = http.createServer(function (req, res) {
